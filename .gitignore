@@ -1,0 +1,8 @@
+# Installed packages
+/node_modules
+
+# Default location for sqlite db
+/db/data
+
+# Files built with gulp
+/public
