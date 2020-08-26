@@ -1,0 +1,11 @@
+body {
+  color: green;
+}
+
+.test {
+  color: fuchsia;
+}
+
+.test:hover{
+  color: blue;
+}

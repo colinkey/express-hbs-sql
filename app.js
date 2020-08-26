@@ -1,9 +1,18 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
 // Server configuration
 const app = express();
 const port = 3000;
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Authentication setup
+const passport = require('./passport');
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(session({ secret: 'gryzzle' }));
 
 // Views and templating engine setup
 const hbs = handlebars.create({

@@ -6,6 +6,4 @@ class BaseController {
 
 }
 
-module.exports = {
-  BaseController
-}
+module.exports = BaseController
