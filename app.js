@@ -29,12 +29,13 @@ app.use(passport.session());
 
 // Views and templating engine setup
 const hbs = handlebars.create({
-  helpers: require('./lib/view-helpers'),
+  helpers: require('./app/lib/view-helpers'),
   extname: '.hbs',
-  layoutsDir: 'views/_layouts',
-  partialsDir: 'views/_partials',
+  layoutsDir: 'app/views/_layouts',
+  partialsDir: 'app/views/_partials',
 });
 app.engine('.hbs', hbs.engine);
+app.set('views', './app/views');
 app.set('view engine', '.hbs');
 
 // Register routes

@@ -1,4 +1,3 @@
-const models = require('../models');
 const BaseController = require('./base');
 
 class HomeController extends BaseController {

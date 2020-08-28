@@ -1,4 +1,4 @@
-const Controllers = require('../../controllers/index');
+const Controllers = require('../../app/controllers/index');
 
 module.exports = {
   '/': {

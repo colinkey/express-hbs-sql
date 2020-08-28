@@ -1,5 +1,4 @@
 const BaseController = require('./base');
-const models = require('../models');
 
 class UserController extends BaseController {
   constructor(...args) {
