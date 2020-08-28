@@ -6,3 +6,6 @@
 
 # Files built with gulp
 /public
+
+# Temporary files
+/tmp

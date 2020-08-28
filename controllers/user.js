@@ -3,7 +3,7 @@ const models = require('../models');
 
 class UserController extends BaseController {
   constructor(...args) {
-    super(args)
+    super(args);
   }
 
   async get() {
@@ -11,4 +11,4 @@ class UserController extends BaseController {
   }
 }
 
-module.exports = UserController
+module.exports = UserController;

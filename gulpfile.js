@@ -14,7 +14,7 @@ const pipeline = {
   js: {
     src: 'views/**/*.js',
     dest: 'public/js/',
-  }
+  },
 };
 
 function assets() {

@@ -7,15 +7,15 @@ class BaseController {
 
   render(template, data = {}) {
     const templateData = {
-      ...data  
-    }
+      ...data,  
+    };
 
     if (this.request.user) {
-      templateData.user = this.request.user?.get()
+      templateData.user = this.request.user?.get();
     }
      
     this.response.render(template, templateData);
   }
 }
 
-module.exports = BaseController
+module.exports = BaseController;

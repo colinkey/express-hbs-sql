@@ -13,7 +13,7 @@ class AuthController extends BaseController {
 
   static async loginHandler(email, password, callback) {
     try {
-      const user = await models.user.findOne({ where: { email } });
+      const user = await models.User.findOne({ where: { email } });
       if (!user) return callback(null, false);
       bcrypt.compare(password, user.passwordDigest, function(error, result) {
         if (error) {
@@ -24,7 +24,7 @@ class AuthController extends BaseController {
           user.incrementSignInCount();
           callback(null, user); 
         }
-      })
+      });
       // if (user.isValidPassword()) 
     } catch (error) {
       return callback(error);
@@ -64,11 +64,11 @@ class AuthController extends BaseController {
           throw Error(error);
         }
 
-        user = await models.user.create({ email: params.email, passwordDigest: hash });
+        user = await models.User.create({ email: params.email, passwordDigest: hash });
         this.response.send(JSON.stringify({ userId: user.id}));
       }); 
     } catch (error) {
-      throw Error(error)
+      throw Error(error);
     }
   }
 
@@ -78,4 +78,4 @@ class AuthController extends BaseController {
   }
 }
 
-module.exports = AuthController
+module.exports = AuthController;

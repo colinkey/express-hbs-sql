@@ -16,7 +16,7 @@ app.use(session({
   store: new RedisStore({ client: redisClient }),
   secret: 'gryzzle',
   cookie: {
-    maxAge: 60 * 60 * 24 * 7 * 1000
+    maxAge: 60 * 60 * 24 * 7 * 1000,
   },
   resave: false,
   saveUninitialized: false,
@@ -32,8 +32,8 @@ const hbs = handlebars.create({
   helpers: require('./lib/view-helpers'),
   extname: '.hbs',
   layoutsDir: 'views/_layouts',
-  partialsDir: 'views/_partials'
-})
+  partialsDir: 'views/_partials',
+});
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 

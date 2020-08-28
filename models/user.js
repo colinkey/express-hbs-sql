@@ -12,14 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     incrementSignInCount() {
-      this.increment('signInCount')
+      this.increment('signInCount');
     }
   };
   user.init({
     email: DataTypes.STRING,
     passwordDigest: DataTypes.STRING,
     signInCount: DataTypes.INTEGER,
-    emailVerified: DataTypes.BOOLEAN
+    emailVerified: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'user',
