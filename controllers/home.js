@@ -1,12 +1,13 @@
-class HomeController {
-  constructor(request, response) {
-    this.request = request;
-    this.response = response;
+const models = require('../models');
+const BaseController = require('./base');
+
+class HomeController extends BaseController {
+  constructor(...args) {
+    super(args);
   }
 
   async get() {
-    const data = { name: "Albert" }
-    this.response.render('home/index', data);
+    this.render('home/index');
   }
 }
 

@@ -1,1 +1,5 @@
-<p>hey {{name}}</p>
+<h1>Home</h1>
+<a href="/auth/login">Login</a> | <a href="/auth/sign-up">Sign Up</a>
+{{#if user}}
+{{> user }}
+{{/if}}

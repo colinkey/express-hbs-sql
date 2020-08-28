@@ -1,13 +1,14 @@
 const bcrypt = require('bcrypt');
 
-const BaseController = require('./base');
+const passport = require('passport');
 const models = require('../models');
+const BaseController = require('./base');
 
 const SALT_ROUNDS = 10;
 
 class AuthController extends BaseController {
-  constructor(request, response) {
-    super(request, response);
+  constructor(...args) {
+    super(args);
   }
 
   static async loginHandler(email, password, callback) {
@@ -20,34 +21,32 @@ class AuthController extends BaseController {
         }
 
         if (result == true) {
-          console.log(result)
+          user.incrementSignInCount();
           callback(null, user); 
         }
       })
       // if (user.isValidPassword()) 
     } catch (error) {
-      console.log(error);
       return callback(error);
     }
   }
 
   async getLogin() {
-    this.response.render('auth/login');
+    this.render('auth/login');
   }
 
   async getSignUp() {
-    this.response.render('auth/sign-up');
+    this.render('auth/sign-up');
   }
 
   async login() { 
-    const params = this.request.params;
+    const params = this.request.body;
 
     if (!params.email || !params.password) {
       this.response.status(400).send();
     }
 
-    passport.authenticate('local');
-    this.response.redirect('/');
+    passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login' })(this.request, this.response, this.next);
   }
 
 
@@ -71,6 +70,11 @@ class AuthController extends BaseController {
     } catch (error) {
       throw Error(error)
     }
+  }
+
+  async logOut() {
+    this.request.logout();
+    this.response.redirect('/');
   }
 }
 

@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="/css/_layouts/styles.css">
 </head>
 <body>
+  {{> header}}
+  {{#if user}}
+  {{> user}}
+  {{/if}}
  {{{ body }}} 
 </body>
 </html>

@@ -1,20 +1,13 @@
+const BaseController = require('./base');
 const models = require('../models');
 
-class UserController {
-  constructor(request, response) {
-    this.request = request;
-    this.response = response;
+class UserController extends BaseController {
+  constructor(...args) {
+    super(args)
   }
 
   async get() {
-    const data = {
-      adjective: 'delightful'
-    };
-
-    this.response.render('user', data);
-  }
-
-  async create() {
+    this.render('user/show');
   }
 }
 

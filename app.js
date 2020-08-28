@@ -2,17 +2,30 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const redis = require('redis');
+
+// Redis config
+const redisClient = redis.createClient();
+const RedisStore = require('connect-redis')(session);
 
 // Server configuration
 const app = express();
 const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({ 
+  store: new RedisStore({ client: redisClient }),
+  secret: 'gryzzle',
+  cookie: {
+    maxAge: 60 * 60 * 24 * 7 * 1000
+  },
+  resave: false,
+  saveUninitialized: false,
+}));
 
 // Authentication setup
 const passport = require('./passport');
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({ secret: 'gryzzle' }));
 
 // Views and templating engine setup
 const hbs = handlebars.create({
