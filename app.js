@@ -46,6 +46,7 @@ app.use('/', router);
 app.use('/', express.static('public'));
 
 // Spin it up and lets get it
-app.listen(port, () => {
+function serverListener() {
   console.log(`App listening on port ${port}`);
-});
+}
+app.listen(port, serverListener);

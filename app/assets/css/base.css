@@ -1,0 +1,25 @@
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  margin: 0 auto;
+  width: 768px;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.header-links li {
+  display: inline-block;
+}
+
+.main-layout {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.home-index {
+  text-align: center;
+}

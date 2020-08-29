@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Express &amp; Handlebars</title>
-  <link rel="stylesheet" href="/css/_layouts/styles.css">
+  {{{ includeCSS "style" }}}
 </head>
 <body>
   {{> header}}
-  {{#if user}}
-  {{> user}}
-  {{/if}}
- {{{ body }}} 
+  <main class="main-layout">
+    {{{ body }}} 
+  </main>
 </body>
 </html>

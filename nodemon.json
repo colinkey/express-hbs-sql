@@ -1,0 +1,11 @@
+{
+  "ignore": [
+    "app/assets", 
+    "app/views",
+    "public/",
+    "db/data/",
+    "package.json",
+    "package-lock.json"
+  ],
+  "ext": "js,json"
+}
