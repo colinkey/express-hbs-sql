@@ -1,5 +1,4 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const redis = require('redis');
@@ -28,12 +27,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Views and templating engine setup
-const hbs = handlebars.create({
-  helpers: require('./app/lib/view-helpers'),
-  extname: '.hbs',
-  layoutsDir: 'app/views/_layouts',
-  partialsDir: 'app/views/_partials',
-});
+const hbs = require('./handlebars');
 app.engine('.hbs', hbs.engine);
 app.set('views', './app/views');
 app.set('view engine', '.hbs');
@@ -47,6 +41,8 @@ app.use('/', express.static('public'));
 
 // Spin it up and lets get it
 function serverListener() {
+  require('./sockets').register(server);
   console.log(`App listening on port ${port}`);
 }
-app.listen(port, serverListener);
+
+const server = app.listen(port, serverListener);

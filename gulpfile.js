@@ -48,7 +48,7 @@ function templates() {
 }
 
 function watch() {
-  browserSync({ port: 4000, proxy: 'localhost:3000' });
+  browserSync({ port: 4000, proxy: { target: 'localhost:3000', ws: true } });
 
   gulp.watch(pipeline.assets.src).on('change', assets);
   gulp.watch(pipeline.css.src).on('change', css);

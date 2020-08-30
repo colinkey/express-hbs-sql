@@ -1,4 +1,5 @@
 const BaseController = require('./base');
+const Socketeer = require('../../sockets');
 
 class UserController extends BaseController {
   constructor(...args) {
@@ -6,7 +7,18 @@ class UserController extends BaseController {
   }
 
   async get() {
-    this.render('user/show');
+    const id = 'abc123';
+    function promisedTimeout(ms) {
+      return new Promise(res => {
+        function handleStuff() {
+          Socketeer.sendToClient(id, 'jester', { name: 'frank' });
+          res();
+        }
+        setTimeout(handleStuff, ms);
+      });
+    }
+    promisedTimeout(2500);
+    this.render('user/show', { suspense: id });
   }
 }
 
