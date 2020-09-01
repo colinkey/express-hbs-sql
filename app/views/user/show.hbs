@@ -1,11 +1,11 @@
 <div class="user-show">
   <h2>{{ user.email }}</h2>
-  <div data-suspense={{ suspense }}>
+  <div data-suspense={{ suspenseId }}>
     {{> spinner}}
   </div>
   <ul>
     <li>ID: {{ user.id }}</li>
     <li>Sign In Count: {{ user.signInCount }}</li>
   </ul>
-  {{!-- {{{ registerSuspense suspense }}} --}}
 </div>
+{{{ registerSuspense suspenseId }}}

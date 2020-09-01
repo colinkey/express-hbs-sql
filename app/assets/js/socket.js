@@ -1,7 +1,7 @@
-const socket = io();
+var socket = socket ? socket : io();
 
-socket.on('server-message', ({ replacer, insertionMethod }) => {
-  const suspender = document.querySelector('[data-suspense]');
+socket.on('suspense-message', ({ id, replacer, insertionMethod }) => {
+  const suspender = document.querySelector(`[data-suspense='${id}']`);
   if (suspender) {
     const suspendee = document.createElement('div');
     suspendee.innerHTML = replacer;
@@ -13,8 +13,4 @@ socket.on('server-message', ({ replacer, insertionMethod }) => {
       suspender.prepend(suspendee); 
     }
   }
-});
-
-socket.on('room-created', ({ room }) => {
-  console.log(room);
 });
